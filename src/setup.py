@@ -174,7 +174,7 @@ strIconChoice = strIconChoice.replace("\"", "")
 if strIconChoice == "":
     os.system(python_path + "/Scripts/pyinstaller\" client.py " + strUPX + " --exclude-module FixTk --exclude-module tcl --exclude-module tk "
                       "--exclude-module _tkinter --exclude-module tkinter --exclude-module Tkinter "
-                      "--onefile --windowed")
+                      "--onefile --windowed --hidden-import pynput.keyboard._win32 --hidden-import pynput.mouse._win32")
 # check to make sure the icon exists and that it is a .ico file
 elif not os.path.isfile(strIconChoice):
     print("Invalid path!")
@@ -186,4 +186,4 @@ else:
     # build the client with an icon
     os.system(python_path + "/Scripts/pyinstaller\" client.py " + strUPX + " --exclude-module FixTk --exclude-module tcl --exclude-module tk "
                       "--exclude-module _tkinter --exclude-module tkinter --exclude-module Tkinter "
-                      "--onefile --windowed --icon=\"" + strIconChoice + "\"")
+                      "--onefile --windowed --hidden-import pynput.keyboard._win32 --hidden-import pynput.mouse._win32 --icon=\"" + strIconChoice + "\"")
